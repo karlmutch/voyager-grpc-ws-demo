@@ -82,4 +82,25 @@ $ dig +short ws.kiteci.com
 
 kubectl create secret generic acme-account --from-literal=ACME_EMAIL=tamal@appscode.com
 
+- Now create the Certificate object. This will issue new TLS certs from Let's Encrypt and create a secret called tls-kiteci-com .
+
+```console
+$ kubectl apply -f ./deploy/certs.yaml
+certificate "kiteci-com" created
+
+$ kubectl get secrets
+NAME                  TYPE                                  DATA      AGE
+acme-account          Opaque                                3         2m
+default-token-xkp6t   kubernetes.io/service-account-token   3         52m
+tls-kiteci-com        kubernetes.io/tls                     2         44s
+```
+
+This process updates the Ingress with an ACME path. You can see the updated Ingress in `./deploy/ing-with-acme-path.yaml` .
+
+- Now, update the Ingress to add `spec.tls` section to activate TLS for both api and ws endpoints.
+
+```console
+$ kubectl apply -f ./deploy/ing-with-tls.yaml
+ingress "voyager-demo" configured
+```
 
