@@ -1,0 +1,41 @@
+apiVersion: voyager.appscode.com/v1beta1
+kind: Ingress
+metadata:
+  name: voyager-demo
+  namespace: default
+spec:
+  tls:
+  - hosts:
+    - kiteci.com
+    - www.kiteci.com
+    - api.kiteci.com
+    - ws.kiteci.com
+    ref:
+      kind: Certificate
+      name: kiteci-com
+  rules:
+  - host: api.kiteci.com
+    http:
+      paths:
+      - backend:
+          serviceName: hello-grpc
+          servicePort: '80'
+  - host: ws.kiteci.com
+    http:
+      paths:
+      - backend:
+          serviceName: hello-websocket
+          servicePort: '80'
+  - host: kiteci.com
+    http:
+      paths:
+      - backend:
+          serviceName: web
+          servicePort: '80'
+  frontendRules:
+  - port: 443
+    rules:
+    - acl has_www hdr(host) -i www.kiteci.com
+    - acl has_www hdr(host) -i www.kiteci.com:443
+    - http-request set-header Host kiteci.com if has_www
+    - http-request redirect code 308 scheme https  if has_www
