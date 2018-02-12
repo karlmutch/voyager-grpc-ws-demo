@@ -1,0 +1,221 @@
+{
+  "AcceptProxy": false,
+  "CORSConfig": {
+    "CORSAllowCredentials": true,
+    "CORSAllowedHeaders": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization",
+    "CORSAllowedMethods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+    "CORSAllowedOrigin": "*",
+    "CORSEnabled": false
+  },
+  "DNSResolvers": [],
+  "DefaultBackend": null,
+  "EnableHSTS": true,
+  "ErrorFiles": null,
+  "ForceMatchServicePort": true,
+  "HSTSIncludeSubDomains": false,
+  "HSTSMaxAge": 15768000,
+  "HSTSPreload": false,
+  "HTTPService": [
+    {
+      "AcceptProxy": false,
+      "Address": "*",
+      "BasicAuth": null,
+      "CORSConfig": {
+        "CORSAllowCredentials": true,
+        "CORSAllowedHeaders": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization",
+        "CORSAllowedMethods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "CORSAllowedOrigin": "*",
+        "CORSEnabled": false
+      },
+      "DefaultBackend": null,
+      "EnableHSTS": true,
+      "ForceMatchServicePort": true,
+      "FrontendName": "http-0_0_0_0-443",
+      "FrontendRules": null,
+      "HSTSIncludeSubDomains": false,
+      "HSTSMaxAge": 15768000,
+      "HSTSPreload": false,
+      "Hosts": [
+        {
+          "Host": "api.kiteci.com",
+          "Paths": null
+        },
+        {
+          "Host": "ws.kiteci.com",
+          "Paths": [
+            {
+              "Backend": {
+                "BackendRules": null,
+                "BasicAuth": null,
+                "Endpoints": [
+                  {
+                    "CheckHealth": false,
+                    "CheckHealthPort": "",
+                    "DNSResolver": "",
+                    "ExternalName": "",
+                    "IP": "10.12.1.9",
+                    "MaxConnections": 0,
+                    "Name": "pod-hello-websocket-6b5644f5fc-699p9",
+                    "Port": "8080",
+                    "SendProxy": "",
+                    "TLSOption": "",
+                    "UseDNSResolver": false,
+                    "Weight": 0
+                  }
+                ],
+                "HeaderRules": null,
+                "Name": "hello-websocket.default:80",
+                "NameGenerated": true,
+                "RewriteRules": null,
+                "Sticky": false,
+                "StickyCookieHash": "",
+                "StickyCookieName": "SERVERID"
+              },
+              "Path": "",
+              "SSLRedirect": false
+            }
+          ]
+        }
+      ],
+      "Limit": {
+        "Connection": 0,
+        "Rate": 0,
+        "TimeSecond": 0
+      },
+      "MaxConnections": 0,
+      "NodePort": 0,
+      "OffloadSSL": true,
+      "Port": 443,
+      "ProxyBodySize": "",
+      "TLSAuth": null,
+      "WhitelistSourceRange": ""
+    },
+    {
+      "AcceptProxy": false,
+      "Address": "*",
+      "BasicAuth": null,
+      "CORSConfig": {
+        "CORSAllowCredentials": true,
+        "CORSAllowedHeaders": "DNT,X-CustomHeader,Keep-Alive,User-Agent,X-Requested-With,If-Modified-Since,Cache-Control,Content-Type,Authorization",
+        "CORSAllowedMethods": "GET,PUT,POST,DELETE,PATCH,OPTIONS",
+        "CORSAllowedOrigin": "*",
+        "CORSEnabled": false
+      },
+      "DefaultBackend": null,
+      "EnableHSTS": true,
+      "ForceMatchServicePort": true,
+      "FrontendName": "http-0_0_0_0-80",
+      "FrontendRules": null,
+      "HSTSIncludeSubDomains": false,
+      "HSTSMaxAge": 15768000,
+      "HSTSPreload": false,
+      "Hosts": [
+        {
+          "Host": "ws.kiteci.com",
+          "Paths": [
+            {
+              "Backend": null,
+              "Path": "",
+              "SSLRedirect": true
+            }
+          ]
+        },
+        {
+          "Host": "",
+          "Paths": [
+            {
+              "Backend": {
+                "BackendRules": null,
+                "BasicAuth": null,
+                "Endpoints": [
+                  {
+                    "CheckHealth": false,
+                    "CheckHealthPort": "",
+                    "DNSResolver": "",
+                    "ExternalName": "",
+                    "IP": "10.12.0.10",
+                    "MaxConnections": 0,
+                    "Name": "pod-voyager-operator-6b9bfbd487-rf59r",
+                    "Port": "56791",
+                    "SendProxy": "",
+                    "TLSOption": "",
+                    "UseDNSResolver": false,
+                    "Weight": 0
+                  }
+                ],
+                "HeaderRules": null,
+                "Name": "voyager-operator.kube-system:56791",
+                "NameGenerated": true,
+                "RewriteRules": null,
+                "Sticky": false,
+                "StickyCookieHash": "",
+                "StickyCookieName": "SERVERID"
+              },
+              "Path": "/.well-known/acme-challenge/",
+              "SSLRedirect": false
+            }
+          ]
+        },
+        {
+          "Host": "api.kiteci.com",
+          "Paths": null
+        }
+      ],
+      "Limit": {
+        "Connection": 0,
+        "Rate": 0,
+        "TimeSecond": 0
+      },
+      "MaxConnections": 0,
+      "NodePort": 0,
+      "OffloadSSL": false,
+      "Port": 80,
+      "ProxyBodySize": "",
+      "TLSAuth": null,
+      "WhitelistSourceRange": ""
+    }
+  ],
+  "Limit": {
+    "Connection": 0,
+    "Rate": 0,
+    "TimeSecond": 0
+  },
+  "MaxConnections": 0,
+  "OptionsDefaults": [
+    {
+      "Enabled": true,
+      "Option": "http-server-close"
+    },
+    {
+      "Enabled": true,
+      "Option": "dontlognull"
+    }
+  ],
+  "ProxyBodySize": "",
+  "Stats": null,
+  "TCPService": [],
+  "TimeoutDefaults": [
+    {
+      "Duration": "50s",
+      "Phase": "connect"
+    },
+    {
+      "Duration": "50s",
+      "Phase": "client"
+    },
+    {
+      "Duration": "50s",
+      "Phase": "client-fin"
+    },
+    {
+      "Duration": "50s",
+      "Phase": "server"
+    },
+    {
+      "Duration": "50s",
+      "Phase": "tunnel"
+    }
+  ],
+  "UserLists": [],
+  "WhitelistSourceRange": ""
+}

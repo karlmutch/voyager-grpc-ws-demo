@@ -154,3 +154,70 @@ kubectl run nginx --image=nginx
 kubectl expose deployment nginx --name=web --port=80 --target-port=80
 ```
 
+- Now update the ingress to add a path for kiteci.com and add `kiteci.com` to tls hosts list.
+
+```console
+$ curl -vv -k https://kiteci.com/
+*   Trying 35.194.36.183...
+* Connected to kiteci.com (35.194.36.183) port 443 (#0)
+* found 148 certificates in /etc/ssl/certs/ca-certificates.crt
+* found 597 certificates in /etc/ssl/certs
+* ALPN, offering http/1.1
+* SSL connection using TLS1.2 / ECDHE_RSA_AES_128_GCM_SHA256
+*    server certificate verification SKIPPED
+*    server certificate status verification SKIPPED
+*    common name: kiteci.com (matched)
+*    server certificate expiration date OK
+*    server certificate activation date OK
+*    certificate public key: RSA
+*    certificate version: #3
+*    subject: CN=kiteci.com
+*    start date: Mon, 12 Feb 2018 07:07:56 GMT
+*    expire date: Sun, 13 May 2018 07:07:56 GMT
+*    issuer: CN=Fake LE Intermediate X1
+*    compression: NULL
+* ALPN, server accepted to use http/1.1
+> GET / HTTP/1.1
+> Host: kiteci.com
+> User-Agent: curl/7.47.0
+> Accept: */*
+> 
+< HTTP/1.1 200 OK
+< Server: nginx/1.13.8
+< Date: Mon, 12 Feb 2018 08:12:03 GMT
+< Content-Type: text/html
+< Content-Length: 612
+< Last-Modified: Tue, 26 Dec 2017 11:11:22 GMT
+< ETag: "5a422e5a-264"
+< Accept-Ranges: bytes
+< Strict-Transport-Security: max-age=15768000
+< 
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>Welcome to nginx!</h1>
+<p>If you see this page, the nginx web server is successfully installed and
+working. Further configuration is required.</p>
+
+<p>For online documentation and support please refer to
+<a href="http://nginx.org/">nginx.org</a>.<br/>
+Commercial support is available at
+<a href="http://nginx.com/">nginx.com</a>.</p>
+
+<p><em>Thank you for using nginx.</em></p>
+</body>
+</html>
+* Connection #0 to host kiteci.com left intact
+```
+
+
