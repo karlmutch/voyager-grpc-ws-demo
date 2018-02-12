@@ -20,6 +20,12 @@ spec:
       - backend:
           serviceName: hello-grpc
           servicePort: '80'
+  - host: api.kiteci.com
+    tcp:
+      port: 8443
+      backend:
+        serviceName: hello-grpc
+        servicePort: '443'
   - host: ws.kiteci.com
     http:
       paths:
