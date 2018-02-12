@@ -1,13 +1,19 @@
 - Deploy a grpc server
 
 ```console
-kubectl apply -f https://raw.githubusercontent.com/appscode/hello-grpc/0.1.0/hack/deploy/deploy.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/appscode/hello-grpc/0.1.0/hack/deploy/deploy.yaml
+
+deployment "hello-grpc" created
+service "hello-grpc" created
 ```
 
 - Deploy a websocket server
 
 ```console
-kubectl apply -f https://raw.githubusercontent.com/appscode/hello-websocket/0.1.0/hack/deploy/deploy.yaml
+$ kubectl apply -f https://raw.githubusercontent.com/appscode/hello-websocket/0.1.0/hack/deploy/deploy.yaml
+
+deployment "hello-websocket" created
+service "hello-websocket" created
 ```
 
 
@@ -33,7 +39,7 @@ Now, try the following URLs to confirm that grpc and websocket server is running
 
 - Install Voyager Operator
 ```console
-curl -fsSL https://raw.githubusercontent.com/appscode/voyager/5.0.0-rc.11/hack/deploy/voyager.sh \
+curl -fsSL https://raw.githubusercontent.com/appscode/voyager/6.0.0-alpha.0/hack/deploy/voyager.sh \
     | bash -s -- --provider=gke
 ```
 
@@ -80,7 +86,11 @@ $ dig +short ws.kiteci.com
 
 - Create acme account secret
 
-kubectl create secret generic acme-account --from-literal=ACME_EMAIL=tamal@appscode.com
+```console
+kubectl create secret generic acme-account \
+  --from-literal=ACME_EMAIL=tamal@appscode.com \
+  --from-literal=ACME_SERVER_URL=https://acme-staging.api.letsencrypt.org/directory
+```
 
 - Now create the Certificate object. This will issue new TLS certs from Let's Encrypt and create a secret called tls-kiteci-com .
 
