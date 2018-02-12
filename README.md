@@ -61,7 +61,7 @@ svc/voyager-voyager-demo   LoadBalancer   10.15.242.178   35.202.123.114   80:31
 
 - Configure api.kiteci.com and ws.kiteci.com domains
 
-![kiteci-domains](kiteci-domains.png)
+![kiteci-domains](/apis/kiteci-domains.png)
 
 
 - Now wait to bit confirm that these new domains are resolving.
@@ -73,4 +73,7 @@ $ dig +short api.kiteci.com
 $ dig +short ws.kiteci.com
 35.202.123.114
 ```
+
+![api-domain](/images/api-domain.png)
+![ws-domain](/images/ws-domain.png)
 
