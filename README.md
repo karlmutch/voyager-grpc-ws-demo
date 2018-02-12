@@ -77,3 +77,9 @@ $ dig +short ws.kiteci.com
 ![api-domain](/images/api-domain.png)
 ![ws-domain](/images/ws-domain.png)
 
+
+- Create acme account secret
+
+kubectl create secret generic acme-account --from-literal=ACME_EMAIL=tamal@appscode.com
+
+
