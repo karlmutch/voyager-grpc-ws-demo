@@ -104,3 +104,35 @@ $ kubectl apply -f ./deploy/ing-with-tls.yaml
 ingress "voyager-demo" configured
 ```
 
+```yaml
+apiVersion: voyager.appscode.com/v1beta1
+kind: Ingress
+metadata:
+  name: voyager-demo
+  namespace: default
+spec:
+  tls:
+  - hosts:
+    - api.kiteci.com
+    - ws.kiteci.com
+    ref:
+      kind: Certificate
+      name: kiteci-com
+  rules:
+  - host: api.kiteci.com
+    http:
+      paths:
+      - backend:
+          serviceName: hello-grpc
+          servicePort: '80'
+  - host: ws.kiteci.com
+    http:
+      paths:
+      - backend:
+          serviceName: hello-websocket
+          servicePort: '80'
+```
+
+![wss-1](/images/secure-wss-1.png)
+![wss-2](/images/secure-wss-2.png)
+
