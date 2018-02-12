@@ -1,0 +1,19 @@
+apiVersion: voyager.appscode.com/v1beta1
+kind: Ingress
+metadata:
+  name: voyager-demo
+  namespace: default
+spec:
+  rules:
+  - host: api.kiteci.com
+    http:
+      paths:
+      - backend:
+          serviceName: hello-grpc
+          servicePort: '80'
+  - host: ws.kiteci.com
+    http:
+      paths:
+      - backend:
+          serviceName: hello-websocket
+          servicePort: '80'
