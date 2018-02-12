@@ -242,3 +242,24 @@ spec:
     - http-request set-header Host kiteci.com if has_www
     - http-request redirect code 308 scheme https if has_www
 ```
+
+
+### Exposing GRPC HTTP/2 Endpoint
+
+Voyager currently used HAProxy 1.7.9 which support HTTP/2 in TCP mode only. To expose the HTTP/2 version of the hello-grpc service, add the following tcp rule to your Ingress yaml.
+
+```
+spec:
+  rules:
+  - host: api.kiteci.com
+    tcp:
+      port: 8443
+      backend:
+        serviceName: hello-grpc
+        servicePort: '443'
+```
+
+Now visit: https://api.kiteci.com:8443/apis/status/json
+
+From your Chrome browser console, you should see the protocol is indicated as h2.
+
