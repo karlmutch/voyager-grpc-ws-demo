@@ -263,3 +263,8 @@ Now visit: https://api.kiteci.com:8443/apis/status/json
 
 From your Chrome browser console, you should see the protocol is indicated as h2.
 
+
+## Further Reading:
+
+- https://www.haproxy.com/blog/websockets-load-balancing-with-haproxy/
+- https://www.haproxy.com/documentation/aloha/7-0/traffic-management/lb-layer7/http-redirection/
