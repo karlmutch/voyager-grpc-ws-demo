@@ -1,0 +1,46 @@
+apiVersion: voyager.appscode.com/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"voyager.appscode.com/v1beta1","kind":"Ingress","metadata":{"annotations":{},"name":"voyager-demo","namespace":"default"},"spec":{"rules":[{"host":"api.kiteci.com","http":{"paths":[{"backend":{"serviceName":"hello-grpc","servicePort":"80"}}]}},{"host":"ws.kiteci.com","http":{"paths":[{"backend":{"serviceName":"hello-websocket","servicePort":"80"}}]}}]}}
+  clusterName: ""
+  creationTimestamp: 2018-02-12T02:40:10Z
+  generation: 0
+  name: voyager-demo
+  namespace: default
+  resourceVersion: "2799"
+  selfLink: /apis/voyager.appscode.com/v1beta1/namespaces/default/ingresses/voyager-demo
+  uid: 0b905d81-0f9e-11e8-b4c5-42010a800082
+spec:
+  resources: {}
+  rules:
+  - http:
+      noTLS: true
+      nodePort: 0
+      paths:
+      - backend:
+          serviceName: voyager-operator.kube-system
+          servicePort: 56791
+        path: /.well-known/acme-challenge/
+      port: 0
+  - host: api.kiteci.com
+    http:
+      nodePort: 0
+      paths:
+      - backend:
+          serviceName: hello-grpc
+          servicePort: "80"
+      port: 0
+  - host: ws.kiteci.com
+    http:
+      nodePort: 0
+      paths:
+      - backend:
+          serviceName: hello-websocket
+          servicePort: "80"
+      port: 0
+status:
+  loadBalancer:
+    ingress:
+    - ip: 35.202.123.114
