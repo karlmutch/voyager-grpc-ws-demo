@@ -221,3 +221,21 @@ Commercial support is available at
 ```
 
 
+- Now to redirect www.kiteci.com to kiteci.com, add the frontendRules mentioned in ./deploy/ing-final.yaml
+
+```
+spec:
+  frontendRules:
+  - port: 80
+    rules:
+    - acl is_proxy_https hdr(X-Forwarded-Proto) https
+    - acl has_www hdr(host) -i www.kiteci.com
+    - acl has_www hdr(host) -i www.kiteci.com:80
+    - http-request redirect code 308 scheme https if ! is_proxy_https has_www
+  - port: 443
+    rules:
+    - acl has_www hdr(host) -i www.kiteci.com
+    - acl has_www hdr(host) -i www.kiteci.com:443
+    - http-request set-header Host kiteci.com if has_www
+    - http-request redirect code 308 scheme https if has_www
+```
