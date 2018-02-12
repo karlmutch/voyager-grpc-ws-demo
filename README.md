@@ -136,3 +136,11 @@ spec:
 ![wss-1](/images/secure-wss-1.png)
 ![wss-2](/images/secure-wss-2.png)
 
+
+- Now, setup the website for kiteci.com
+
+```console
+kubectl run nginx --image=nginx
+kubectl expose deployment nginx --name=web --port=80 --target-port=80
+```
+
