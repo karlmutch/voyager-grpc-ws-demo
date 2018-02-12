@@ -1,7 +1,7 @@
 **This tutorial shows how to expose a GRPC server, WebSocket Server and Nginx server using a single Voyager Ingress**
 
 
-- Deploy a grpc server
+- Deploy a [grpc server](https://github.com/appscode/hello-grpc).
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/appscode/hello-grpc/0.1.0/hack/deploy/deploy.yaml
@@ -10,7 +10,7 @@ deployment "hello-grpc" created
 service "hello-grpc" created
 ```
 
-- Deploy a websocket server
+- Deploy a [websocket server](https://github.com/appscode/hello-websocket).
 
 ```console
 $ kubectl apply -f https://raw.githubusercontent.com/appscode/hello-websocket/0.1.0/hack/deploy/deploy.yaml
