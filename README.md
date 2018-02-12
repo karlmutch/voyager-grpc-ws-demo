@@ -246,7 +246,7 @@ spec:
 
 ### Exposing GRPC HTTP/2 Endpoint
 
-Voyager currently used HAProxy 1.7.9 which support HTTP/2 in TCP mode only. To expose the HTTP/2 version of the hello-grpc service, add the following tcp rule to your Ingress yaml.
+Voyager currently uses HAProxy 1.7.9 which supports HTTP/2 in TCP mode only. To expose the HTTP/2 version of the hello-grpc service, add the following tcp rule to your Ingress yaml.
 
 ```
 spec:
